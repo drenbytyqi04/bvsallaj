@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return pageMetadata(locale, "", t.meta.homeTitle, t.meta.homeDesc);
 }
 
-const CAT_TONE: Record<string, Tone> = { boden: "oak", fliesen: "tile", wand: "dry", renovierung: "linen" };
+const CAT_TONE: Record<string, Tone> = { boden: "oak", fliesen: "tile", wand: "dry", renovierung: "linen", fassade: "dry" };
 
 export default async function Home({ params }: Params) {
   const { locale } = await params;
