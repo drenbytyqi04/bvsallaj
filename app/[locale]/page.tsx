@@ -46,7 +46,7 @@ export default async function Home({ params }: Params) {
       <Work t={t} imgs={projectImgs} before={images.before()} after={images.after()} />
       <Process t={t} />
       <Reviews t={t} />
-      <Area t={t} locale={locale} />
+      <Area t={t} />
       <Faq t={t} />
       <Contact t={t} locale={locale} />
     </>

@@ -23,7 +23,7 @@ export const site = {
   rating: { value: "5,0", valueNum: 5, count: 6 },
   reviewsUrl: "https://www.google.com/maps/search/?api=1&query=BV-Sallaj+Boden+%26+Innenausbau+Eschweiler",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Nickelstra%C3%9Fe+20%2C+52249+Eschweiler",
-  mapsEmbed: "https://www.google.com/maps?q=Nickelstra%C3%9Fe+20,+52249+Eschweiler&z=11&output=embed",
+  mapsEmbed: "https://www.google.com/maps?q=Nickelstra%C3%9Fe+20,+52249+Eschweiler&z=15&output=embed",
   cities: ["Eschweiler", "Aachen", "Stolberg", "Düren"],
 } as const;
 

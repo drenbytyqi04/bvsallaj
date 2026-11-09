@@ -4,8 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState, type FormEvent } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site, SERVICE_SLUGS } from "@/lib/site";
-import { Check, Clock, Phone, Pin, WhatsappLogo } from "./Icons";
+import { Arrow, Check, Clock, Phone, Pin, WhatsappLogo } from "./Icons";
 import { ease, fadeUp, Reveal, SectionHead, stagger } from "./motion";
+import MapEmbed from "./MapEmbed";
 
 type Field = "name" | "phone" | "email" | "message" | "privacy";
 type Status = "idle" | "sending" | "success" | "error";
@@ -74,50 +75,82 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
 
   const [privA, privB] = f.privacy.split("{link}");
 
-  return (
-    <section className="section section--dark contact" id="kontakt">
-      <div className="container contact__grid">
-        <div className="contact__info">
-          <SectionHead index={t.contact.index} kicker={t.contact.kicker} title={t.contact.title} lead={t.contact.lead} light />
-          <motion.ul className="contact__list" variants={stagger(0.08)} initial="hidden" whileInView="show" viewport={{ once: true }}>
-            <motion.li variants={fadeUp}>
-              <Phone />
-              <span>
-                <small>{t.contact.phoneLabel}</small>
-                <a href={site.phoneHref} className="contact__phone">
-                  {site.phone}
-                </a>
-                <a href={site.phone2Href} className="contact__phone contact__phone--2">
-                  {site.phone2}
-                </a>
-              </span>
-            </motion.li>
-            <motion.li variants={fadeUp}>
-              <Pin />
-              <span>
-                <small>{t.contact.addressLabel}</small>
-                <a href={site.mapsUrl} target="_blank" rel="noopener">
-                  {site.street}, {site.zip} {site.city}
-                </a>
-              </span>
-            </motion.li>
-            <motion.li variants={fadeUp}>
-              <Clock />
-              <span>
-                <small>{t.contact.hoursLabel}</small>
-                {t.contact.hours}
-              </span>
-            </motion.li>
-          </motion.ul>
-          {site.whatsapp && (
-            <a className="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.waMessage)}`} target="_blank" rel="noopener">
-              <WhatsappLogo />
-              {t.contact.whatsapp}
-            </a>
-          )}
-        </div>
+  const waHref = site.whatsapp ? `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.waMessage)}` : "";
 
-        <Reveal delay={0.1}>
+  return (
+    <section className="section contact" id="kontakt">
+      <div className="container">
+        <SectionHead index={t.contact.index} kicker={t.contact.kicker} title={t.contact.title} lead={t.contact.lead} align="split" />
+
+        <div className="contact__grid">
+          <div className="contact__info">
+            <motion.ul className="cinfo" variants={stagger(0.08)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }}>
+              <motion.li variants={fadeUp}>
+                <span className="cinfo__icon"><Pin /></span>
+                <div>
+                  <p className="cinfo__title">{t.contact.addressLabel}</p>
+                  <a href={site.mapsUrl} target="_blank" rel="noopener" className="cinfo__plain">
+                    {site.street}
+                    <br />
+                    {site.zip} {site.city}, Deutschland
+                  </a>
+                </div>
+              </motion.li>
+              <motion.li variants={fadeUp}>
+                <span className="cinfo__icon"><Phone /></span>
+                <div>
+                  <p className="cinfo__title">{t.contact.phoneLabel}</p>
+                  <a href={site.phoneHref} className="cinfo__link">{site.phone}</a>
+                  <a href={site.phone2Href} className="cinfo__link">{site.phone2}</a>
+                  <p className="cinfo__note">{t.contact.phoneNote}</p>
+                </div>
+              </motion.li>
+              {site.whatsapp && (
+                <motion.li variants={fadeUp}>
+                  <span className="cinfo__icon cinfo__icon--wa"><WhatsappLogo /></span>
+                  <div>
+                    <p className="cinfo__title">{t.contact.waTitle}</p>
+                    <a href={waHref} target="_blank" rel="noopener" className="cinfo__link">{site.phone}</a>
+                    <p className="cinfo__note">{t.contact.waNote}</p>
+                  </div>
+                </motion.li>
+              )}
+              <motion.li variants={fadeUp}>
+                <span className="cinfo__icon"><Clock /></span>
+                <div>
+                  <p className="cinfo__title">{t.contact.hoursLabel}</p>
+                  <p className="cinfo__plain">
+                    {t.contact.hoursWeek}
+                    <br />
+                    {t.contact.hoursSat}
+                  </p>
+                </div>
+              </motion.li>
+            </motion.ul>
+
+            <motion.div className="cinfo__ctas" variants={stagger(0.08)} initial="hidden" whileInView="show" viewport={{ once: true }}>
+              <motion.a variants={fadeUp} href={site.phoneHref} className="btn btn--accent btn--lg btn--block">
+                <Phone />
+                {t.contact.callCta} · {site.phone}
+              </motion.a>
+              <motion.a variants={fadeUp} href={site.phone2Href} className="btn btn--accent btn--lg btn--block">
+                <Phone />
+                {t.contact.callCta} · {site.phone2}
+              </motion.a>
+              {site.whatsapp && (
+                <motion.a variants={fadeUp} href={waHref} target="_blank" rel="noopener" className="btn btn--outline-accent btn--lg btn--block">
+                  <WhatsappLogo />
+                  {t.contact.waCta}
+                </motion.a>
+              )}
+            </motion.div>
+          </div>
+
+          <Reveal delay={0.1} className="contact__formwrap">
+            <div className="form__head">
+              <h3>{t.contact.formTitle}</h3>
+              <p>{t.contact.formLead}</p>
+            </div>
           <form ref={formRef} className="form" name="kontakt" onSubmit={onSubmit} noValidate>
             <input type="hidden" name="sprache" value={locale} />
             {/* Web3Forms spam honeypot – must stay empty */}
@@ -171,7 +204,7 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
                 <WhatsappLogo />
                 <span>
                   {f.photoHint}{" "}
-                  <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.waMessage)}`} target="_blank" rel="noopener" className="link">
+                  <a href={waHref} target="_blank" rel="noopener" className="link">
                     WhatsApp
                   </a>
                 </span>
@@ -195,6 +228,7 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
 
             <motion.button type="submit" className="btn btn--accent btn--lg btn--block" disabled={status === "sending"} whileTap={{ scale: 0.98 }}>
               {status === "sending" ? f.sending : f.submit}
+              {status !== "sending" && <Arrow className="btn__arrow" />}
             </motion.button>
 
             <div role="status" aria-live="polite" className="form__status">
@@ -214,7 +248,10 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
               </AnimatePresence>
             </div>
           </form>
-        </Reveal>
+          </Reveal>
+        </div>
+
+        <MapEmbed t={t} locale={locale} className="contact__map" />
       </div>
     </section>
   );
