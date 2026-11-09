@@ -1,6 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#c2873b"/>
-  <path d="M12 46V28l20-14 20 14v18" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M24 46V34h16v12" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M8 50h48" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" width="220" height="220">
+  <defs>
+    <!-- Top arc for "BODEN & INNENAUSBAU" -->
+    <path id="topArc" d="M 24,95 A 88,88 0 0,1 196,95"/>
+    <!-- Bottom arc for "SALLAJ" -->
+    <path id="bottomArc" d="M 42,175 A 76,76 0 0,0 178,175"/>
+  </defs>
+
+  <!-- Outer circle background -->
+  <circle cx="110" cy="110" r="108" fill="#3D4E8E"/>
+
+  <!-- Top curved text: BODEN & INNENAUSBAU -->
+  <text fill="white" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12.5" font-weight="700" letter-spacing="1.8">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">BODEN &amp; INNENAUSBAU</textPath>
+  </text>
+
+  <!-- House icon (outline) centered upper area -->
+  <!-- Roof -->
+  <polyline points="80,78 110,52 140,78"
+    fill="none" stroke="white" stroke-width="3.5"
+    stroke-linejoin="round" stroke-linecap="round"/>
+  <!-- Left wall -->
+  <line x1="80" y1="78" x2="80" y2="107" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Right wall -->
+  <line x1="140" y1="78" x2="140" y2="107" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Bottom wall / floor -->
+  <line x1="80" y1="107" x2="140" y2="107" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Door -->
+  <rect x="98" y="89" width="24" height="18" fill="none" stroke="white" stroke-width="2.8" rx="1"/>
+
+  <!-- BV text -->
+  <text x="110" y="163"
+    fill="white"
+    font-family="'Arial Black', 'Impact', 'Helvetica Neue', Arial, sans-serif"
+    font-size="72" font-weight="900"
+    text-anchor="middle"
+    letter-spacing="-2">BV</text>
+
+  <!-- Bottom curved text: SALLAJ -->
+  <text fill="white" font-family="'Helvetica Neue', Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="5">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">SALLAJ</textPath>
+  </text>
 </svg>

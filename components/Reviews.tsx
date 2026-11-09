@@ -1,72 +1,67 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLang } from "./LanguageProvider";
-import { REVIEWS_URL } from "./Icons";
+import type { Dict } from "@/lib/i18n";
+import { site } from "@/lib/site";
+import { Arrow, Star } from "./Icons";
 import { ease, Reveal, SectionHead } from "./motion";
-import type { Key } from "@/lib/i18n";
 
-const REVIEWS: { k: Key; name: string }[] = [
-  { k: "reviews.q1", name: "Lea Wertz" },
-  { k: "reviews.q2", name: "Edison Xani" },
-  { k: "reviews.q3", name: "Ardian Nuredini" },
-];
-
-export default function Reviews() {
-  const { t } = useLang();
+export default function Reviews({ t }: { t: Dict }) {
+  const [first, ...rest] = t.reviews.items;
   return (
-    <section className="section" id="reviews">
+    <section className="section" id="bewertungen">
       <div className="container">
-        <SectionHead eyebrow={t("reviews.eyebrow")} title={t("reviews.title")}>
-          <p className="score">
-            <span className="stars" aria-hidden="true">★★★★★</span> <strong>5,0</strong> {t("reviews.basis")}
-          </p>
-        </SectionHead>
+        <SectionHead index={t.reviews.index} kicker={t.reviews.kicker} title={t.reviews.title} />
 
-        <div className="grid grid--3">
-          {REVIEWS.map(({ k, name }, i) => (
-            <motion.blockquote
-              key={k}
-              className="quote"
-              initial={{ opacity: 0, y: 40, rotate: i === 1 ? 0 : i === 0 ? -2 : 2 }}
-              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+        <div className="reviews">
+          <Reveal className="reviews__score">
+            <span className="reviews__big">{site.rating.value}</span>
+            <span className="stars stars--lg" role="img" aria-label={`${site.rating.value} / 5`}>
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Star key={i} />
+              ))}
+            </span>
+            <p>{t.reviews.basis.replace("{count}", String(site.rating.count))}</p>
+            <a className="link" href={site.reviewsUrl} target="_blank" rel="noopener">
+              {t.reviews.all} <Arrow />
+            </a>
+          </Reveal>
+
+          <motion.figure
+            className="review review--feature"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, ease }}
+          >
+            <span className="review__mark" aria-hidden="true">“</span>
+            <blockquote>{first.text}</blockquote>
+            <figcaption>
+              <strong>{first.name}</strong> · Google
+            </figcaption>
+          </motion.figure>
+
+          {rest.map((r, i) => (
+            <motion.figure
+              key={r.name}
+              className="review"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease, delay: i * 0.15 }}
-              whileHover={{ y: -6 }}
+              transition={{ duration: 0.9, ease, delay: 0.1 + i * 0.1 }}
             >
-              <div className="stars" aria-label="5/5">
+              <span className="stars" aria-hidden="true">
                 {[0, 1, 2, 3, 4].map((s) => (
-                  <motion.span
-                    key={s}
-                    initial={{ opacity: 0, scale: 0 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", stiffness: 400, damping: 12, delay: 0.4 + i * 0.15 + s * 0.08 }}
-                  >
-                    ★
-                  </motion.span>
+                  <Star key={s} />
                 ))}
-              </div>
-              <p>{t(k)}</p>
-              <footer>
-                {name} <span>· Google</span>
-              </footer>
-            </motion.blockquote>
+              </span>
+              <blockquote>{r.text}</blockquote>
+              <figcaption>
+                <strong>{r.name}</strong> · Google
+              </figcaption>
+            </motion.figure>
           ))}
         </div>
-
-        <Reveal className="center" delay={0.2}>
-          <motion.a
-            className="btn btn--outline"
-            href={REVIEWS_URL}
-            target="_blank"
-            rel="noopener"
-            whileHover={{ y: -3 }}
-            whileTap={{ scale: 0.96 }}
-          >
-            {t("reviews.all")}
-          </motion.a>
-        </Reveal>
       </div>
     </section>
   );

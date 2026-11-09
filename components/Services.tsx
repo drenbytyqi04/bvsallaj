@@ -1,56 +1,87 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useLang } from "./LanguageProvider";
-import { fadeUp, SectionHead, stagger } from "./motion";
-import type { Key } from "@/lib/i18n";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import type { Dict, Locale } from "@/lib/i18n";
+import type { Img } from "@/lib/images";
+import type { ServiceSlug } from "@/lib/site";
+import Photo from "./Photo";
+import { Arrow } from "./Icons";
+import { ease, fadeUp, SectionHead, stagger } from "./motion";
 
-const SERVICES: { n: number; visual: string }[] = [
-  { n: 1, visual: "v-floor" },
-  { n: 2, visual: "v-tile" },
-  { n: 3, visual: "v-paint" },
-  { n: 4, visual: "v-dry" },
-  { n: 5, visual: "v-reno" },
-  { n: 6, visual: "v-detail" },
-];
+export default function Services({
+  t,
+  locale,
+  slugs,
+  imgs,
+}: {
+  t: Dict;
+  locale: Locale;
+  slugs: readonly ServiceSlug[];
+  imgs: Record<ServiceSlug, Img>;
+}) {
+  const [active, setActive] = useState<ServiceSlug>(slugs[0]);
 
-export default function Services() {
-  const { t } = useLang();
   return (
-    <section className="section" id="services">
+    <section className="section" id="leistungen">
       <div className="container">
-        <SectionHead eyebrow={t("services.eyebrow")} title={t("services.title")}>
-          <p>{t("services.lead")}</p>
-        </SectionHead>
+        <SectionHead index={t.services.index} kicker={t.services.kicker} title={t.services.title} lead={t.services.lead} align="split" />
 
-        <motion.div
-          className="grid grid--3"
-          variants={stagger(0.1)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.15 }}
-        >
-          {SERVICES.map(({ n, visual }) => (
-            <motion.article
-              key={n}
-              className="card"
-              variants={fadeUp}
-              whileHover={{ y: -8, boxShadow: "0 24px 40px -18px rgba(28,25,23,.35)" }}
-              transition={{ type: "spring", stiffness: 300, damping: 22 }}
-            >
-              <div className="card__visual-wrap">
+        <div className="svc">
+          <motion.ol
+            className="svc__list"
+            variants={stagger(0.08)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {slugs.map((slug, i) => {
+              const s = t.services.items[slug];
+              return (
+                <motion.li key={slug} variants={fadeUp}>
+                  <a
+                    href={`/${locale}/leistungen/${slug}/`}
+                    className={`svc__row${active === slug ? " is-active" : ""}`}
+                    onMouseEnter={() => setActive(slug)}
+                    onFocus={() => setActive(slug)}
+                  >
+                    <span className="svc__num">0{i + 1}</span>
+                    <span className="svc__body">
+                      <span className="svc__title">{s.title}</span>
+                      <span className="svc__short">{s.short}</span>
+                    </span>
+                    <span className="svc__go" aria-hidden="true">
+                      <Arrow />
+                    </span>
+                    <span className="svc__thumb" aria-hidden="true">
+                      <Photo img={imgs[slug]} alt="" pendingLabel={t.photo.pending} />
+                    </span>
+                  </a>
+                </motion.li>
+              );
+            })}
+          </motion.ol>
+
+          <div className="svc__preview" aria-hidden="true">
+            <div className="svc__sticky">
+              <AnimatePresence mode="popLayout" initial={false}>
                 <motion.div
-                  className={`card__visual ${visual}`}
-                  aria-hidden="true"
-                  whileHover={{ scale: 1.08 }}
-                  transition={{ duration: 0.6 }}
-                />
-              </div>
-              <h3>{t(`services.s${n}.t` as Key)}</h3>
-              <p>{t(`services.s${n}.d` as Key)}</p>
-            </motion.article>
-          ))}
-        </motion.div>
+                  key={active}
+                  className="svc__previewImg"
+                  initial={{ opacity: 0, scale: 1.04, clipPath: "inset(0 0 0 100%)" }}
+                  animate={{ opacity: 1, scale: 1, clipPath: "inset(0 0 0 0%)" }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.7, ease }}
+                >
+                  <Photo img={imgs[active]} alt="" pendingLabel={t.photo.pending} />
+                </motion.div>
+              </AnimatePresence>
+              <p className="svc__previewLabel">
+                <span>{String(slugs.indexOf(active) + 1).padStart(2, "0")}</span> {t.services.items[active].title}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
