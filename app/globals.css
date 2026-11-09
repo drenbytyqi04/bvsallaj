@@ -176,9 +176,27 @@ svg { width: 1.25em; height: 1.25em; fill: none; stroke: currentColor; stroke-wi
   .burger { display: none; }
   .header__call { display: inline-flex; }
 }
-@media (max-width: 420px) {
+/* Mobile header: logo + language switch + menu always fit */
+@media (max-width: 1119px) {
+  .header__inner { gap: 12px; }
+  .header__actions { gap: 8px; flex: none; }
+  .logo { min-width: 0; flex: 0 1 auto; }
+  .logo__text { min-width: 0; }
+  .logo__sub { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+}
+@media (max-width: 640px) {
   .logo__sub { display: none; }
-  .logo img { width: 44px; height: 44px; }
+  .logo img { width: 42px; height: 42px; }
+  .logo__name { font-size: 1.2rem; white-space: nowrap; }
+  .lang a { min-width: 34px; height: 30px; padding: 0 6px; font-size: 0.72rem; }
+  .burger { width: 42px; height: 42px; }
+  .burger span { left: 12px; right: 12px; }
+  .burger span:nth-child(1) { top: 17px; }
+  .burger span:nth-child(2) { top: 23px; }
+  .burger[aria-expanded="true"] span:nth-child(1), .burger[aria-expanded="true"] span:nth-child(2) { top: 20px; }
+}
+@media (max-width: 359px) {
+  .logo__name { display: none; }
 }
 
 /* ---------- Photo placeholders ---------- */
@@ -539,8 +557,8 @@ a.cinfo__plain:hover { color: var(--accent); }
 .form__head { margin-bottom: 24px; }
 .form__head h3 { font-family: var(--font-display); font-size: clamp(1.6rem, 2.6vw, 2.1rem); line-height: 1.15; margin-bottom: 6px; }
 .form__head p { color: var(--muted); }
-.contact__map { margin-top: clamp(48px, 6vw, 72px); aspect-ratio: auto; min-height: 440px; border: 1px solid var(--line); box-shadow: 0 20px 40px -24px rgba(15, 30, 54, 0.35); }
-@media (min-width: 760px) { .contact__map { aspect-ratio: 21 / 8; min-height: 380px; } }
+.contact__map { margin-top: clamp(48px, 6vw, 72px); aspect-ratio: auto; height: 440px; max-width: 100%; border: 1px solid var(--line); box-shadow: 0 20px 40px -24px rgba(15, 30, 54, 0.35); }
+@media (min-width: 760px) { .contact__map { height: clamp(380px, 36vw, 520px); } }
 .area { align-items: end; }
 .area .shead { margin-bottom: 0; }
 .area__places { align-self: center; }
