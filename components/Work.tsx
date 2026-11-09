@@ -14,7 +14,7 @@ export default function Work({ t, imgs, before, after }: { t: Dict; imgs: Img[];
   const [filter, setFilter] = useState<Cat | "all">("all");
   const items = t.work.items.map((it, i) => ({ ...it, cat: it.cat as Cat, img: imgs[i], n: i }));
   const visible = items.filter((it) => filter === "all" || it.cat === filter);
-  const cats = Object.keys(t.work.filters) as Cat[];
+  const cats = (Object.keys(t.work.filters) as Cat[]).filter((c) => items.some((it) => it.cat === c));
 
   return (
     <section className="section" id="referenzen">

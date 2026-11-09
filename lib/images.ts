@@ -28,10 +28,10 @@ const SERVICE_TONE: Record<ServiceSlug, Tone> = {
 };
 
 export const images = {
-  hero: () => img("/images/hero.jpg", 1600, 2000, "oak"),
+  hero: () => img("/images/hero.jpg", 1200, 1500, "oak"),
   team: () => img("/images/team.jpg", 1200, 1500, "linen"),
-  service: (slug: ServiceSlug) => img(`/images/leistungen/${slug}.jpg`, 1800, 1200, SERVICE_TONE[slug]),
-  project: (n: number, tone: Tone) => img(`/images/projekte/projekt-${n}.jpg`, 1200, 900, tone),
+  service: (slug: ServiceSlug) => img(`/images/leistungen/${slug}.jpg`, 1500, 1000, SERVICE_TONE[slug]),
+  project: (n: number, tone: Tone) => img(`/images/projekte/projekt-${n}.jpg`, 900, 1200, tone),
   before: () => img("/images/vorher-nachher/vorher.jpg", 1800, 1200, "dry"),
   after: () => img("/images/vorher-nachher/nachher.jpg", 1800, 1200, "oak"),
 };
