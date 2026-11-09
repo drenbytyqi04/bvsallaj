@@ -29,22 +29,30 @@ Einfach die Datei unter genau diesem Namen ablegen und neu bauen – fertig. Am 
 
 | Datei (in `public/images/`) | Format | Wo |
 | --- | --- | --- |
-| `hero.jpg` | 1600×2000 (4:5) | Startseite oben |
-| `team.jpg` | 1200×1500 (4:5) | „Warum wir“ – Foto von Ihnen |
-| `leistungen/bodenbelaege.jpg` | 1800×1200 (3:2) | Leistung Bodenbeläge |
-| `leistungen/fliesen.jpg` | 1800×1200 | Leistung Fliesen |
-| `leistungen/malerarbeiten.jpg` | 1800×1200 | Leistung Maler |
-| `leistungen/trockenbau.jpg` | 1800×1200 | Leistung Trockenbau |
-| `leistungen/renovierung.jpg` | 1800×1200 | Leistung Renovierung |
-| `projekte/projekt-1.jpg` … `projekt-6.jpg` | 1200×900 (4:3) | Referenzen (Titel/Ort in `lib/i18n/*.ts` → `work.items`) |
-| `vorher-nachher/vorher.jpg`, `nachher.jpg` | 1800×1200 | Vorher/Nachher-Regler (gleicher Blickwinkel!) |
+| `hero.jpg` | 1200×1500 (4:5) | Startseite oben |
+| `team.jpg` | 1125×1406 (4:5) | „Warum wir“ |
+| `leistungen/<slug>.jpg` | 1200×1500 (4:5) | Leistungen: `bodenbelaege`, `fliesen`, `malerarbeiten`, `trockenbau`, `renovierung` |
+| `projekte/projekt-1.jpg` … `projekt-9.jpg` | 900×1200 (3:4) | Referenzen (Titel/Ort in `lib/i18n/*.ts` → `work.items`) |
+| `vorher-nachher/vorher.jpg`, `nachher.jpg` | 1800×1200 (3:2) | Vorher/Nachher-Regler – erscheint erst, wenn **beide** Dateien vorhanden sind |
 
-## Veröffentlichen (Netlify)
+Andere Formate gehen auch – das Bild wird passend zugeschnitten.
 
-1. Repository in Netlify importieren – `netlify.toml` setzt Build-Befehl und `out`-Ordner automatisch.
-2. Unter *Site configuration → Environment variables* `NEXT_PUBLIC_SITE_URL` auf die echte Domain setzen (z. B. `https://www.bv-sallaj.de`) – wichtig für SEO (Canonical, Sitemap, hreflang).
-3. Unter *Forms* die Benachrichtigung per E-Mail für das Formular „kontakt“ einschalten.
-4. Domain verbinden, dann `https://<domain>/sitemap.xml` in der Google Search Console einreichen und das Google-Unternehmensprofil auf die Website verlinken.
+## Veröffentlichen
+
+Domain: **https://bv-sallajbodeninnenausbau.de** (in `lib/site.ts` hinterlegt – Canonical, Sitemap, hreflang, Open Graph).
+
+**Vercel** (aktuell): Repository importieren, Framework „Next.js“, Output wird automatisch erkannt.
+Unter *Settings → Domains* `bv-sallajbodeninnenausbau.de` und `www.bv-sallajbodeninnenausbau.de` hinzufügen
+(www → Weiterleitung auf die Hauptdomain) und die angezeigten DNS-Einträge beim Domain-Anbieter (GoDaddy) setzen:
+
+| Typ | Name | Wert |
+| --- | --- | --- |
+| A | `@` | `76.76.21.21` (oder der von Vercel angezeigte Wert) |
+| CNAME | `www` | `cname.vercel-dns.com` (oder der von Vercel angezeigte Wert) |
+
+**Netlify** (alternativ): `netlify.toml` setzt Build-Befehl und `out`-Ordner; Formular „kontakt“ unter *Forms* aktivieren.
+
+Danach `https://bv-sallajbodeninnenausbau.de/sitemap.xml` in der Google Search Console einreichen und die Website im Google-Unternehmensprofil eintragen.
 
 ## Vor dem Livegang ergänzen
 

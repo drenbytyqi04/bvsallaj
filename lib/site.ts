@@ -3,8 +3,7 @@ export const site = {
   name: "BV-Sallaj Boden & Innenausbau",
   shortName: "BV-Sallaj",
   owners: "B. & V. Sallaj",
-  // TODO: replace with the real domain once registered
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.bv-sallaj.de").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://bv-sallajbodeninnenausbau.de").replace(/\/$/, ""),
   phone: "+49 176 84504026",
   phoneHref: "tel:+4917684504026",
   phone2: "+49 176 84525401",
