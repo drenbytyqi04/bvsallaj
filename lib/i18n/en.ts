@@ -76,7 +76,7 @@ const en: Dict = {
           "Grouting and silicone joints",
           "Tile skirting",
         ],
-        imgAlt: "Freshly laid tiles in a bathroom",
+        imgAlt: "Tiler fitting wall tiles",
       },
       malerarbeiten: {
         title: "Painting & wallpapering",
@@ -91,7 +91,7 @@ const en: Dict = {
           "Repairing cracks and holes",
           "Painting doors and radiators",
         ],
-        imgAlt: "Freshly painted wall in a living room",
+        imgAlt: "Painter at work with a paint roller",
       },
       trockenbau: {
         title: "Drywall",

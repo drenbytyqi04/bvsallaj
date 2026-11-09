@@ -62,6 +62,8 @@ export default function Work({ t, imgs, before, after }: { t: Dict; imgs: Img[];
           </AnimatePresence>
         </motion.ul>
 
+        {/* Before/after only appears once both real photos exist in /public/images/vorher-nachher/ */}
+        {before.exists && after.exists && (
         <div className="ba-wrap">
           <Reveal className="ba-wrap__copy">
             <h3 className="h3">{t.work.baTitle}</h3>
@@ -75,6 +77,7 @@ export default function Work({ t, imgs, before, after }: { t: Dict; imgs: Img[];
             />
           </Reveal>
         </div>
+        )}
       </div>
     </section>
   );

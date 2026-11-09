@@ -76,7 +76,7 @@ const sq: Dict = {
           "Fugim dhe fuga me silikon",
           "Listela me pllaka",
         ],
-        imgAlt: "Pllaka të sapo vendosura në një banjë",
+        imgAlt: "Vendosja e pllakave në mur",
       },
       malerarbeiten: {
         title: "Lyerje & tapiceri muri",
@@ -91,7 +91,7 @@ const sq: Dict = {
           "Riparim i të çarave dhe vrimave",
           "Lyerje e dyerve dhe radiatorëve",
         ],
-        imgAlt: "Mur i sapo lyer në një dhomë ndenjeje",
+        imgAlt: "Bojaxhi në punë me rul",
       },
       trockenbau: {
         title: "Rigips (Trockenbau)",

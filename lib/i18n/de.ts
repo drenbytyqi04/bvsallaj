@@ -74,7 +74,7 @@ const de = {
           "Verfugen und Silikonfugen",
           "Fliesensockel",
         ],
-        imgAlt: "Frisch verlegte Fliesen in einem Badezimmer",
+        imgAlt: "Fliesenleger beim Verlegen von Wandfliesen",
       },
       malerarbeiten: {
         title: "Maler- & Tapezierarbeiten",
@@ -89,7 +89,7 @@ const de = {
           "Ausbessern von Rissen und Löchern",
           "Lackierarbeiten an Türen und Heizkörpern",
         ],
-        imgAlt: "Frisch gestrichene Wand in einem Wohnraum",
+        imgAlt: "Maler mit Farbrolle bei der Arbeit",
       },
       trockenbau: {
         title: "Trockenbau",

@@ -57,6 +57,12 @@ export default async function Impressum({ params }: Params) {
       <h2>Verbraucherstreitbeilegung</h2>
       <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
 
+      <h2>Bildnachweis</h2>
+      <p>
+        Projektfotos: {site.name}. Symbolbilder Leistungen „Fliesen“ und „Maler- &amp; Tapezierarbeiten“: Unsplash –
+        charlesdeluvio (unsplash.com/@charlesdeluvio) und Callum Hill (unsplash.com/@inkyhills), Unsplash-Lizenz.
+      </p>
+
       <h2>Haftung für Inhalte und Links</h2>
       <p>
         Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität
