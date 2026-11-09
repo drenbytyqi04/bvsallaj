@@ -20,7 +20,6 @@ npm run build    # statischer Export nach ./out
 | `app/[locale]/…` | Seiten: Startseite, `leistungen/[slug]`, `impressum`, `datenschutz` |
 | `components/` | Sektionen (Hero, Services, WhyUs, Work, Process, Reviews, Area, Faq, Contact …) |
 | `app/globals.css` | Design-System (Farben als CSS-Variablen ganz oben) |
-| `public/__forms.html` | Formular-Definition für Netlify Forms – nicht löschen |
 
 ## Fotos einfügen
 
@@ -50,7 +49,11 @@ Unter *Settings → Domains* sind `www.bv-sallajbodeninnenausbau.de` (Production
 | A | `@` | `76.76.21.21` (oder der von Vercel angezeigte Wert) |
 | CNAME | `www` | `cname.vercel-dns.com` (oder der von Vercel angezeigte Wert) |
 
-**Netlify** (alternativ): `netlify.toml` setzt Build-Befehl und `out`-Ordner; Formular „kontakt“ unter *Forms* aktivieren.
+**Kontaktformular:** läuft über [Web3Forms](https://web3forms.com) (funktioniert auf jedem Hosting). Die Anfragen gehen an die
+E-Mail-Adresse, mit der der Access Key (`web3formsKey` in `lib/site.ts`) erstellt wurde. Fotos schicken Kunden per WhatsApp
+(Datei-Anhänge sind im kostenlosen Web3Forms-Tarif nicht enthalten).
+
+**Netlify** (alternativ): `netlify.toml` setzt Build-Befehl und `out`-Ordner.
 
 Danach `https://www.bv-sallajbodeninnenausbau.de/sitemap.xml` in der Google Search Console einreichen und die Website im Google-Unternehmensprofil eintragen.
 

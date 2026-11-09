@@ -245,6 +245,7 @@ const sq: Dict = {
       messagePlaceholder: "Cilat dhoma, sa m², çfarë dyshemeje …?",
       file: "Foto e ambienteve",
       fileHint: "JPG ose PNG, maks. 8 MB",
+      photoHint: "Foto të ambienteve? Na i dërgoni me",
       privacy: "E kam lexuar {link} dhe pajtohem që të dhënat e mia të përpunohen për trajtimin e kërkesës.",
       privacyLink: "politikën e privatësisë",
       submit: "Dërgo kërkesën",

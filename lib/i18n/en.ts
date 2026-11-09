@@ -245,6 +245,7 @@ const en: Dict = {
       messagePlaceholder: "Which rooms, how many m², which floor covering …?",
       file: "Photo of the rooms",
       fileHint: "JPG or PNG, max. 8 MB",
+      photoHint: "Photos of the rooms? Feel free to send them via",
       privacy: "I have read the {link} and agree to my details being processed to handle my request.",
       privacyLink: "privacy policy",
       submit: "Send request",

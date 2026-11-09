@@ -243,6 +243,7 @@ const de = {
       messagePlaceholder: "Welche Räume, wie viele m², welcher Belag …?",
       file: "Foto der Räume",
       fileHint: "JPG oder PNG, max. 8 MB",
+      photoHint: "Fotos der Räume? Schicken Sie sie uns gern per",
       privacy: "Ich habe die {link} gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung der Anfrage einverstanden.",
       privacyLink: "Datenschutzerklärung",
       submit: "Anfrage senden",

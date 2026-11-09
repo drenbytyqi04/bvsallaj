@@ -4,19 +4,17 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState, type FormEvent } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site, SERVICE_SLUGS } from "@/lib/site";
-import { Check, Clock, Phone, Pin, Upload, WhatsappLogo } from "./Icons";
+import { Check, Clock, Phone, Pin, WhatsappLogo } from "./Icons";
 import { ease, fadeUp, Reveal, SectionHead, stagger } from "./motion";
 
-type Field = "name" | "phone" | "email" | "message" | "privacy" | "file";
+type Field = "name" | "phone" | "email" | "message" | "privacy";
 type Status = "idle" | "sending" | "success" | "error";
-const MAX_FILE = 8 * 1024 * 1024;
 
 export default function Contact({ t, locale, preselect }: { t: Dict; locale: Locale; preselect?: string }) {
   const f = t.contact.form;
   const formRef = useRef<HTMLFormElement>(null);
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
   const [status, setStatus] = useState<Status>("idle");
-  const [fileName, setFileName] = useState("");
 
   function validate(data: FormData) {
     const e: Partial<Record<Field, string>> = {};
@@ -26,8 +24,6 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = f.errors.email;
     if (String(data.get("message") || "").trim().length < 5) e.message = f.errors.message;
     if (!data.get("privacy")) e.privacy = f.errors.privacy;
-    const file = data.get("foto");
-    if (file instanceof File && file.size > MAX_FILE) e.file = f.errors.file;
     return e;
   }
 
@@ -38,19 +34,30 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
     const e = validate(data);
     setErrors(e);
     if (Object.keys(e).length) {
-      const first = form.querySelector<HTMLElement>(`[name="${Object.keys(e)[0] === "file" ? "foto" : Object.keys(e)[0]}"]`);
+      const first = form.querySelector<HTMLElement>(`[name="${Object.keys(e)[0]}"]`);
       first?.focus();
       return;
     }
-    const file = data.get("foto");
-    if (file instanceof File && file.size === 0) data.delete("foto");
     setStatus("sending");
     try {
-      // Netlify Forms (definition in /public/__forms.html). multipart because of the optional photo.
-      const res = await fetch("/__forms.html", { method: "POST", body: data });
-      if (!res.ok) throw new Error(String(res.status));
+      // Web3Forms: delivers the request by email to the address registered for this access key.
+      const name = String(data.get("name")).trim();
+      const payload = {
+        ...Object.fromEntries(data.entries()),
+        access_key: site.web3formsKey,
+        subject: `Neue Anfrage über die Website – ${name}`,
+        from_name: "BV-Sallaj Website",
+        // lets the owner reply directly to the customer when an email was given
+        ...(String(data.get("email") || "").trim() ? { replyto: String(data.get("email")).trim() } : {}),
+      };
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const json = (await res.json().catch(() => ({}))) as { success?: boolean };
+      if (!res.ok || !json.success) throw new Error(String(res.status));
       form.reset();
-      setFileName("");
       setStatus("success");
     } catch {
       setStatus("error");
@@ -111,14 +118,10 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
         </div>
 
         <Reveal delay={0.1}>
-          <form ref={formRef} className="form" name="kontakt" onSubmit={onSubmit} noValidate encType="multipart/form-data">
-            <input type="hidden" name="form-name" value="kontakt" />
+          <form ref={formRef} className="form" name="kontakt" onSubmit={onSubmit} noValidate>
             <input type="hidden" name="sprache" value={locale} />
-            <p className="hp" aria-hidden="true">
-              <label>
-                Bot <input name="bot-field" tabIndex={-1} autoComplete="off" />
-              </label>
-            </p>
+            {/* Web3Forms spam honeypot – must stay empty */}
+            <input type="checkbox" name="botcheck" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
             <div className="form__row">
               <label className="field">
@@ -163,25 +166,17 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
               {err("message")}
             </label>
 
-            <label className="file">
-              <input
-                type="file"
-                name="foto"
-                accept="image/jpeg,image/png,image/webp,image/heic"
-                onChange={(e) => setFileName(e.target.files?.[0]?.name ?? "")}
-                {...aria("file")}
-              />
-              <span className="file__box">
-                <Upload />
+            {site.whatsapp && (
+              <p className="form__hint">
+                <WhatsappLogo />
                 <span>
-                  <strong>{fileName || f.file}</strong>
-                  <small>
-                    {f.fileHint} · {f.optional}
-                  </small>
+                  {f.photoHint}{" "}
+                  <a href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.waMessage)}`} target="_blank" rel="noopener" className="link">
+                    WhatsApp
+                  </a>
                 </span>
-              </span>
-              {err("file")}
-            </label>
+              </p>
+            )}
 
             <label className="check">
               <input type="checkbox" name="privacy" value="ja" {...aria("privacy")} />
