@@ -39,11 +39,11 @@ Andere Formate gehen auch – das Bild wird passend zugeschnitten.
 
 ## Veröffentlichen
 
-Domain: **https://bv-sallajbodeninnenausbau.de** (in `lib/site.ts` hinterlegt – Canonical, Sitemap, hreflang, Open Graph).
+Domain: **https://www.bv-sallajbodeninnenausbau.de** (Hauptadresse, in `lib/site.ts` hinterlegt – Canonical, Sitemap, hreflang, Open Graph). `bv-sallajbodeninnenausbau.de` leitet per 308 auf www weiter.
 
 **Vercel** (aktuell): Repository importieren, Framework „Next.js“, Output wird automatisch erkannt.
-Unter *Settings → Domains* `bv-sallajbodeninnenausbau.de` und `www.bv-sallajbodeninnenausbau.de` hinzufügen
-(www → Weiterleitung auf die Hauptdomain) und die angezeigten DNS-Einträge beim Domain-Anbieter (GoDaddy) setzen:
+Unter *Settings → Domains* sind `www.bv-sallajbodeninnenausbau.de` (Production) und
+`bv-sallajbodeninnenausbau.de` (308 → www) eingerichtet und die angezeigten DNS-Einträge beim Domain-Anbieter (GoDaddy) setzen:
 
 | Typ | Name | Wert |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ Unter *Settings → Domains* `bv-sallajbodeninnenausbau.de` und `www.bv-sallajbo
 
 **Netlify** (alternativ): `netlify.toml` setzt Build-Befehl und `out`-Ordner; Formular „kontakt“ unter *Forms* aktivieren.
 
-Danach `https://bv-sallajbodeninnenausbau.de/sitemap.xml` in der Google Search Console einreichen und die Website im Google-Unternehmensprofil eintragen.
+Danach `https://www.bv-sallajbodeninnenausbau.de/sitemap.xml` in der Google Search Console einreichen und die Website im Google-Unternehmensprofil eintragen.
 
 ## Vor dem Livegang ergänzen
 
