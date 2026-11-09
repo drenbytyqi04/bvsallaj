@@ -57,7 +57,8 @@ E-Mail-Adresse, mit der der Access Key (`web3formsKey` in `lib/site.ts`) erstell
 
 Danach `https://www.bv-sallajbodeninnenausbau.de/sitemap.xml` in der Google Search Console einreichen und die Website im Google-Unternehmensprofil eintragen.
 
-## Vor dem Livegang ergänzen
+## Rechtliches
 
-Alle Stellen in `[eckigen Klammern]` – siehe Impressum, Datenschutz und `work.items` (Projektorte).
-Die Datenschutzerklärung ist eine Vorlage und sollte rechtlich geprüft werden.
+Impressum und Datenschutzerklärung sind ausgefüllt (Inhaber: Besart Sallaj und Valmir Sallaj).
+Falls vorhanden, noch ergänzen: USt-IdNr., Handwerkskammer/Handwerksrolle, Rechtsform (z. B. GbR).
+Offen in `lib/i18n/*.ts` → `work.items`: Projektorte `[Ort]`.

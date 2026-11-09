@@ -25,7 +25,7 @@ export default async function Datenschutz({ params }: Params) {
       <p>
         {site.name}
         <br />
-        Inhaber: [Vor- und Nachname]
+        Inhaber: {site.owners}
         <br />
         {site.street}, {site.zip} {site.city}
         <br />
@@ -43,11 +43,11 @@ export default async function Datenschutz({ params }: Params) {
 
       <h2>3. Hosting und Server-Logfiles</h2>
       <p>
-        Diese Website wird bei [Hosting-Anbieter, z. B. Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA]
+        Diese Website wird bei Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA
         gehostet. Beim Aufruf der Website werden technisch notwendige Daten (z. B. IP-Adresse, Datum und Uhrzeit, aufgerufene
         Seite, Browsertyp) in Server-Logfiles verarbeitet, um die Website sicher und stabil bereitzustellen (Art. 6 Abs. 1 lit.
         f DSGVO). Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung; eine Übermittlung in die USA erfolgt auf
-        Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln. [Bitte an den tatsächlichen Anbieter anpassen.]
+        Grundlage des EU-US Data Privacy Framework bzw. von Standardvertragsklauseln.
       </p>
 
       <h2>4. Kontaktformular und Anfragen</h2>
@@ -56,7 +56,7 @@ export default async function Datenschutz({ params }: Params) {
         Telefonnummer, ggf. E-Mail-Adresse und Nachricht), um Ihre Anfrage zu bearbeiten und Ihnen ein
         Angebot zu erstellen (Art. 6 Abs. 1 lit. b DSGVO). Die Formulardaten werden über den Dienst Web3Forms
         (https://web3forms.com) per E-Mail an uns weitergeleitet; dabei kann eine Verarbeitung außerhalb der EU erfolgen.
-        [Bitte Angaben zum Anbieter und zur Datenübermittlung anhand der Web3Forms-Datenschutzerklärung prüfen.] Wir löschen die Daten, sobald sie für die Bearbeitung nicht mehr
+        Wir löschen die Daten, sobald sie für die Bearbeitung nicht mehr
         erforderlich sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
       </p>
 
@@ -98,7 +98,7 @@ export default async function Datenschutz({ params }: Params) {
       </p>
 
       <p>
-        <em>Stand: [Monat Jahr]</em>
+        <em>Stand: November 2026</em>
       </p>
     </LegalShell>
   );

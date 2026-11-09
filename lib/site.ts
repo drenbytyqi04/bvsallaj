@@ -2,7 +2,7 @@
 export const site = {
   name: "BV-Sallaj Boden & Innenausbau",
   shortName: "BV-Sallaj",
-  owners: "B. & V. Sallaj",
+  owners: "Besart Sallaj und Valmir Sallaj",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.bv-sallajbodeninnenausbau.de").replace(/\/$/, ""),
   phone: "+49 176 84504026",
   phoneHref: "tel:+4917684504026",

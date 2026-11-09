@@ -21,7 +21,7 @@ export default async function Impressum({ params }: Params) {
       <p>
         {site.name}
         <br />
-        Inhaber: [Vor- und Nachname des Inhabers / der Inhaber]
+        Inhaber: {site.owners}
         <br />
         {site.street}
         <br />
@@ -32,27 +32,17 @@ export default async function Impressum({ params }: Params) {
 
       <h2>Kontakt</h2>
       <p>
-        Telefon: <a href={site.phoneHref}>{site.phone}</a>
+        Telefon: <a href={site.phoneHref}>{site.phone}</a> · <a href={site.phone2Href}>{site.phone2}</a>
         <br />
         E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
 
-      <h2>Umsatzsteuer-ID</h2>
-      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: [USt-IdNr.]</p>
-
-      <h2>Berufsrechtliche Angaben</h2>
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
       <p>
-        Zuständige Handwerkskammer: [z. B. Handwerkskammer Aachen, Sandkaulbach 21, 52062 Aachen]
+        {site.owners}
         <br />
-        Eintragung in der Handwerksrolle: [ja/nein, Nr.]
-        <br />
-        Berufsbezeichnung: [z. B. Bodenleger] – verliehen in der Bundesrepublik Deutschland
-        <br />
-        Berufsrechtliche Regelungen: Handwerksordnung (HwO), einsehbar unter www.gesetze-im-internet.de
+        {site.street}, {site.zip} {site.city}
       </p>
-
-      <h2>Berufshaftpflichtversicherung</h2>
-      <p>[Name und Sitz des Versicherers, Geltungsraum – nur falls vorhanden, sonst Abschnitt entfernen]</p>
 
       <h2>Verbraucherstreitbeilegung</h2>
       <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>

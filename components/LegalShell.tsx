@@ -13,7 +13,6 @@ export default function LegalShell({ t, locale, title, children }: { t: Dict; lo
           {title}
         </h1>
         {t.legal.germanOnly && <p className="legal__lang">{t.legal.germanOnly}</p>}
-        <p className="legal__note">{t.legal.note}</p>
         <div className="legal__body" lang="de">
           {children}
         </div>
