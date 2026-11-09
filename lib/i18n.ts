@@ -1,5 +1,5 @@
 /* Translations: German (default), English, Albanian */
-window.I18N = {
+export const dict = {
   de: {
     "meta.title": "BV-Sallaj Boden & Innenausbau – Eschweiler",
     "nav.services": "Leistungen", "nav.about": "Über uns", "nav.reviews": "Bewertungen", "nav.process": "Ablauf", "nav.contact": "Kontakt",
@@ -140,4 +140,8 @@ window.I18N = {
     "form.invalid": "Ju lutem plotësoni emrin, telefonin dhe mesazhin.",
     "footer.imprint": "Impressum", "footer.rights": "Të gjitha të drejtat e rezervuara."
   }
-};
+} as const;
+
+export type Lang = keyof typeof dict;
+export type Key = keyof (typeof dict)["de"];
+export const LANGS: Lang[] = ["de", "en", "sq"];
