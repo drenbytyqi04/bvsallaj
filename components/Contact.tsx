@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState, type FormEvent } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site, SERVICE_SLUGS } from "@/lib/site";
-import { Check, Clock, Phone, Pin, Upload, Whatsapp } from "./Icons";
+import { Check, Clock, Phone, Pin, Upload, WhatsappLogo } from "./Icons";
 import { ease, fadeUp, Reveal, SectionHead, stagger } from "./motion";
 
 type Field = "name" | "phone" | "email" | "message" | "privacy" | "file";
@@ -103,8 +103,8 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
             </motion.li>
           </motion.ul>
           {site.whatsapp && (
-            <a className="btn btn--line-light" href={`https://wa.me/${site.whatsapp}`} target="_blank" rel="noopener">
-              <Whatsapp />
+            <a className="btn btn--whatsapp" href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.contact.waMessage)}`} target="_blank" rel="noopener">
+              <WhatsappLogo />
               {t.contact.whatsapp}
             </a>
           )}

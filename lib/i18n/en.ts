@@ -232,6 +232,7 @@ const en: Dict = {
     hoursLabel: "Opening hours",
     hours: "Mon–Fri 7 am–6 pm · Sat 8 am–1 pm",
     whatsapp: "Message on WhatsApp",
+    waMessage: "Hello BV-Sallaj, I'm interested in a quote. ",
     form: {
       name: "Name",
       phone: "Phone",

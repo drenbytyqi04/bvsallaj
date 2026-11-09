@@ -230,6 +230,7 @@ const de = {
     hoursLabel: "Öffnungszeiten",
     hours: "Mo–Fr 07:00–18:00 Uhr · Sa 08:00–13:00 Uhr",
     whatsapp: "WhatsApp schreiben",
+    waMessage: "Hallo BV-Sallaj, ich interessiere mich für ein Angebot. ",
     form: {
       name: "Name",
       phone: "Telefon",

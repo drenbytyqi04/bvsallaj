@@ -7,6 +7,7 @@ import { getDict, isLocale, LOCALES } from "@/lib/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CallFab from "@/components/CallFab";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import Providers from "@/components/Providers";
 
 export const dynamicParams = false;
@@ -31,6 +32,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           <main id="main">{children}</main>
           <Footer locale={locale} t={t} />
           <CallFab label={t.a11y.call} />
+          <WhatsAppFab label={t.contact.whatsapp} message={t.contact.waMessage} />
         </Providers>
       </body>
     </html>

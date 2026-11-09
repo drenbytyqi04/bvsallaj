@@ -232,6 +232,7 @@ const sq: Dict = {
     hoursLabel: "Orari",
     hours: "E hënë–E premte 07:00–18:00 · E shtunë 08:00–13:00",
     whatsapp: "Shkruani në WhatsApp",
+    waMessage: "Përshëndetje BV-Sallaj, jam i interesuar për një ofertë. ",
     form: {
       name: "Emri",
       phone: "Telefoni",
