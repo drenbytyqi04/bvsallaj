@@ -227,6 +227,7 @@ const sq: Dict = {
     kicker: "Kontakti",
     title: "Le të flasim për projektin tuaj.",
     lead: "Na telefononi ose na dërgoni kërkesën tuaj. Do t'ju përgjigjemi sa më shpejt.",
+    emailLabel: "Email",
     phoneLabel: "Telefoni",
     addressLabel: "Adresa",
     hoursLabel: "Orari",

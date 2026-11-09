@@ -35,6 +35,7 @@ export function businessJsonLd(locale: Locale, description: string) {
     description,
     url: `${site.url}/${locale}/`,
     telephone: ["+4917684504026", "+4917684525401"],
+    ...(site.email ? { email: site.email } : {}),
     openingHoursSpecification: site.hours.map((h) => ({
       "@type": "OpeningHoursSpecification",
       dayOfWeek: h.days.map((d) => `https://schema.org/${d}`),

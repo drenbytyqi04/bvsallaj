@@ -34,7 +34,7 @@ export default async function Impressum({ params }: Params) {
       <p>
         Telefon: <a href={site.phoneHref}>{site.phone}</a>
         <br />
-        E-Mail: [E-Mail-Adresse]
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
 
       <h2>Umsatzsteuer-ID</h2>

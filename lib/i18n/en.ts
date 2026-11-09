@@ -227,6 +227,7 @@ const en: Dict = {
     kicker: "Contact",
     title: "Let's talk about your project.",
     lead: "Give us a call or send us your enquiry. We'll get back to you as soon as possible.",
+    emailLabel: "Email",
     phoneLabel: "Phone",
     addressLabel: "Address",
     hoursLabel: "Opening hours",

@@ -225,6 +225,7 @@ const de = {
     kicker: "Kontakt",
     title: "Lassen Sie uns über Ihr Projekt sprechen.",
     lead: "Rufen Sie uns an oder schicken Sie uns Ihre Anfrage. Wir melden uns schnellstmöglich bei Ihnen.",
+    emailLabel: "E-Mail",
     phoneLabel: "Telefon",
     addressLabel: "Adresse",
     hoursLabel: "Öffnungszeiten",

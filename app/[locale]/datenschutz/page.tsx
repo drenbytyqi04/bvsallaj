@@ -31,7 +31,7 @@ export default async function Datenschutz({ params }: Params) {
         <br />
         Telefon: {site.phone}
         <br />
-        E-Mail: [E-Mail-Adresse]
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
 
       <h2>2. Allgemeines</h2>

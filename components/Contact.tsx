@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState, type FormEvent } from "react";
 import type { Dict, Locale } from "@/lib/i18n";
 import { site, SERVICE_SLUGS } from "@/lib/site";
-import { Arrow, Check, Clock, Phone, Pin, WhatsappLogo } from "./Icons";
+import { Arrow, Check, Clock, Mail, Phone, Pin, WhatsappLogo } from "./Icons";
 import { ease, fadeUp, Reveal, SectionHead, stagger } from "./motion";
 import MapEmbed from "./MapEmbed";
 
@@ -105,6 +105,15 @@ export default function Contact({ t, locale, preselect }: { t: Dict; locale: Loc
                   <p className="cinfo__note">{t.contact.phoneNote}</p>
                 </div>
               </motion.li>
+              {site.email && (
+                <motion.li variants={fadeUp}>
+                  <span className="cinfo__icon"><Mail /></span>
+                  <div>
+                    <p className="cinfo__title">{t.contact.emailLabel}</p>
+                    <a href={`mailto:${site.email}`} className="cinfo__link cinfo__link--break">{site.email}</a>
+                  </div>
+                </motion.li>
+              )}
               {site.whatsapp && (
                 <motion.li variants={fadeUp}>
                   <span className="cinfo__icon cinfo__icon--wa"><WhatsappLogo /></span>

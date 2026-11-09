@@ -9,7 +9,7 @@ export const site = {
   phone2: "+49 176 84525401",
   phone2Href: "tel:+4917684525401",
   whatsapp: "4917684504026" as string | null,
-  email: null as string | null,
+  email: "fussbodenbaubv@gmail.com" as string | null,
   // Web3Forms access key – public by design (only allows sending to the registered inbox)
   web3formsKey: "93fa042e-3694-43ec-9b42-112c8404fcb4",
   street: "Nickelstraße 20",

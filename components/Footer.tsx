@@ -47,6 +47,12 @@ export default function Footer({ t, locale }: { t: Dict; locale: Locale }) {
               <a href={site.phoneHref}>{site.phone}</a>
               <br />
               <a href={site.phone2Href}>{site.phone2}</a>
+              {site.email && (
+                <>
+                  <br />
+                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                </>
+              )}
             </address>
           </div>
         </div>
