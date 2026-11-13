@@ -36,6 +36,20 @@ Einfach die Datei unter genau diesem Namen ablegen und neu bauen – fertig. Am 
 
 Andere Formate gehen auch – das Bild wird passend zugeschnitten.
 
+Nach dem Hinzufügen/Ersetzen von Fotos die WebP-Versionen erzeugen (schneller auf dem Handy):
+
+```bash
+python3 scripts/optimize-images.py
+```
+
+## SEO
+
+- Startseite, 5 Leistungsseiten und 4 Ortsseiten (`/de/bodenleger/eschweiler|aachen|stolberg|dueren/`) in DE/EN/SQ
+- Titel/Beschreibungen in `lib/i18n/*.ts` (`meta`, `services.items.*.metaTitle`, `cityPage`)
+- Strukturierte Daten (LocalBusiness mit Geo-Koordinaten, Öffnungszeiten, Bewertung; FAQ, Service, Breadcrumb, WebSite)
+- `sitemap.xml`, `robots.txt`, hreflang, Canonical, Open Graph, Web-App-Manifest
+- Neue Orte: in `lib/site.ts` → `CITIES` ergänzen und in `cityPage.intros` je Sprache einen eigenen Text schreiben
+
 ## Veröffentlichen
 
 Domain: **https://www.bv-sallajbodeninnenausbau.de** (Hauptadresse, in `lib/site.ts` hinterlegt – Canonical, Sitemap, hreflang, Open Graph). `bv-sallajbodeninnenausbau.de` leitet per 308 auf www weiter.

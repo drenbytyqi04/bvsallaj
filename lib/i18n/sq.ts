@@ -3,7 +3,7 @@ import type { Dict } from "./de";
 const sq: Dict = {
   langName: "Shqip",
   meta: {
-    homeTitle: "Shtrim dyshemesh & rregullim i brendshëm në Eschweiler | BV-Sallaj",
+    homeTitle: "Shtrim dyshemesh & renovim në Eschweiler | BV-Sallaj",
     homeDesc:
       "BV-Sallaj Boden & Innenausbau: shtrim dyshemesh, pllaka, lyerje dhe rigips në Eschweiler, Aachen, Stolberg dhe Düren. 5,0 ★ në Google.",
     imprintTitle: "Impressum | BV-Sallaj Boden & Innenausbau",
@@ -28,6 +28,7 @@ const sq: Dict = {
   },
   photo: { pending: "Foto së shpejti" },
   hero: {
+    h1: "Shtrim dyshemesh & rregullim i brendshëm në Eschweiler",
     kicker: "Dysheme & ambiente të brendshme · Eschweiler",
     titleA: "Dysheme ku",
     titleB: "ndihesh në shtëpi.",
@@ -126,12 +127,31 @@ const sq: Dict = {
     },
   },
   servicePage: {
+    inRegion: "në Eschweiler, Aachen & rrethinë",
     back: "Të gjitha shërbimet",
     includesTitle: "Për çfarë kujdesemi ne",
     whyTitle: "Ku mund të mbështeteni",
     otherTitle: "Shërbime të tjera",
     ctaTitle: "Po planifikoni një projekt?",
     ctaText: "Na tregoni shkurt për çfarë bëhet fjalë. Vijmë ta shohim në vend dhe ju dërgojmë një ofertë të qartë.",
+  },
+  cityPage: {
+    kicker: "Zona e shërbimit",
+    title: "Shtrim dyshemesh në {city}",
+    metaTitle: "Shtrim dyshemesh në {city} – Pllaka & rigips | BV-Sallaj",
+    metaDesc: "Shtrim dyshemesh në {city}: vinyl, laminat, parket, pllaka, lyerje dhe rigips. Konsultë personale në vend dhe ofertë e qartë. 5,0 ★ në Google.",
+    lead: "Dysheme, pllaka, lyerje dhe rigips në {city} – nga biznesi familjar BV-Sallaj në Eschweiler.",
+    servicesTitle: "Shërbimet tona në {city}",
+    whyTitle: "Pse BV-Sallaj në {city}",
+    otherTitle: "Vende të tjera",
+    linkLabel: "Shtrim dyshemesh në {city}",
+    footerTitle: "Shtrim dyshemesh në",
+    intros: {
+      eschweiler: "Eschweiler është shtëpia jonë: kompania ndodhet në Nickelstraße, në Eschweiler-Röhe. Qoftë banesë e vjetër në qendër, shtëpi familjare në Dürwiß apo ndërtim i ri në Weisweiler – vijmë shpejt, i shohim ambientet dhe ju këshillojmë personalisht.",
+      aachen: "Nga Eschweiler arrijmë shpejt në Aachen – qoftë në Brand, Eilendorf, Burtscheid apo në qendër. Te ndërtesat e vjetra në Aachen, rëndësi ka përgatitja e kujdesshme e bazës; te ndërtimet e reja, lidhjet dhe kalimet e pastra. Të dyja janë standard për ne.",
+      stolberg: "Stolberg është fqinji ynë i afërt – për ne vetëm një rrugë e shkurtër. Shtrojmë dysheme të reja, vendosim pllaka në banja e kuzhina dhe bëjmë lyerje e rigips në gjithë Stolberg-un, nga qyteti i vjetër deri në Büsbach dhe Mausbach.",
+      dueren: "Punojmë edhe në Düren dhe në rrethin e Düren-it. Qoftë një dhomë apo e gjithë banesa: e shohim në vend, ju bëjmë një ofertë të qartë dhe e kryejmë punën pastër dhe në afat.",
+    },
   },
   why: {
     index: "02",

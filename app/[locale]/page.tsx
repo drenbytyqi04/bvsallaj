@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getDict, type Locale } from "@/lib/i18n";
 import { images, type Tone } from "@/lib/images";
-import { businessJsonLd, pageMetadata } from "@/lib/seo";
+import { businessJsonLd, pageMetadata, websiteJsonLd } from "@/lib/seo";
 import { SERVICE_SLUGS, type ServiceSlug } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import Hero from "@/components/Hero";
@@ -40,13 +40,14 @@ export default async function Home({ params }: Params) {
     <>
       <JsonLd data={businessJsonLd(locale, t.meta.homeDesc)} />
       <JsonLd data={faqLd} />
+      <JsonLd data={websiteJsonLd(locale)} />
       <Hero t={t} locale={locale} img={images.hero()} />
       <Services t={t} locale={locale} slugs={SERVICE_SLUGS} imgs={serviceImgs} />
       <WhyUs t={t} img={images.team()} />
       <Work t={t} imgs={projectImgs} before={images.before()} after={images.after()} />
       <Process t={t} />
       <Reviews t={t} />
-      <Area t={t} />
+      <Area t={t} locale={locale} />
       <Faq t={t} />
       <Contact t={t} locale={locale} />
     </>

@@ -49,7 +49,7 @@ export default function Work({ t, imgs, before, after }: { t: Dict; imgs: Img[];
               >
                 <figure>
                   <div className="work__img">
-                    <Photo img={it.img} alt={it.title} pendingLabel={t.photo.pending} />
+                    <Photo img={it.img} alt={it.title} pendingLabel={t.photo.pending} sizes="(max-width: 700px) 100vw, (max-width: 1024px) 50vw, 33vw" />
                   </div>
                   <figcaption>
                     <span className="work__cat">{t.work.filters[it.cat]}</span>

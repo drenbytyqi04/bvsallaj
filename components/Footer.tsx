@@ -1,5 +1,5 @@
 import type { Dict, Locale } from "@/lib/i18n";
-import { site, SERVICE_SLUGS } from "@/lib/site";
+import { CITIES, site, SERVICE_SLUGS } from "@/lib/site";
 import Logo from "./Logo";
 
 export default function Footer({ t, locale }: { t: Dict; locale: Locale }) {
@@ -56,6 +56,15 @@ export default function Footer({ t, locale }: { t: Dict; locale: Locale }) {
             </address>
           </div>
         </div>
+
+        <nav className="footer__cities" aria-label={t.cityPage.kicker}>
+          <span>{t.cityPage.footerTitle}</span>
+          {CITIES.map((c) => (
+            <a key={c.slug} href={`${home}bodenleger/${c.slug}/`}>
+              {c.name}
+            </a>
+          ))}
+        </nav>
 
         <div className="footer__bottom">
           <p>

@@ -16,6 +16,8 @@ export const site = {
   zip: "52249",
   city: "Eschweiler",
   country: "DE",
+  // from the Google Maps Plus Code R6FQ+5P Eschweiler (9F28R6FQ+5P)
+  geo: { lat: 50.822937, lng: 6.239313 },
   hours: [
     { days: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "07:00", closes: "18:00" },
     { days: ["Saturday"], opens: "08:00", closes: "13:00" },
@@ -26,6 +28,15 @@ export const site = {
   mapsEmbed: "https://www.google.com/maps?q=Nickelstra%C3%9Fe+20,+52249+Eschweiler&z=15&output=embed",
   cities: ["Eschweiler", "Aachen", "Stolberg", "Düren"],
 } as const;
+
+/** Local landing pages: /[locale]/bodenleger/[slug]/ */
+export const CITIES = [
+  { slug: "eschweiler", name: "Eschweiler" },
+  { slug: "aachen", name: "Aachen" },
+  { slug: "stolberg", name: "Stolberg" },
+  { slug: "dueren", name: "Düren" },
+] as const;
+export type CitySlug = (typeof CITIES)[number]["slug"];
 
 export const SERVICE_SLUGS = ["bodenbelaege", "fliesen", "malerarbeiten", "trockenbau", "renovierung"] as const;
 export type ServiceSlug = (typeof SERVICE_SLUGS)[number];

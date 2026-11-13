@@ -25,6 +25,8 @@ export default async function LocaleLayout({ children, params }: { children: Rea
     <html lang={locale} className={`${display.variable} ${sans.variable}`}>
       <head>
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body>
         <Providers>

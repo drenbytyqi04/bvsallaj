@@ -50,6 +50,9 @@ export default function ServiceDetail({
                 <span className="in-line" style={{ animationDelay: "0.3s" }}>
                   {s.title}
                 </span>
+              </span>{" "}
+              <span className="sd-hero__region in-fade" style={{ animationDelay: "0.45s" }}>
+                {t.servicePage.inRegion}
               </span>
             </h1>
             <p className="sd-hero__lead in-fade" {...fade(0.55)}>
@@ -120,7 +123,7 @@ export default function ServiceDetail({
               <motion.li key={o.slug} variants={fadeUp}>
                 <a href={`/${locale}/leistungen/${o.slug}/`} className="other">
                   <span className="other__img">
-                    <Photo img={o.img} alt="" pendingLabel={t.photo.pending} />
+                    <Photo img={o.img} alt="" pendingLabel={t.photo.pending} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
                   </span>
                   <span className="other__title">
                     {o.title} <Arrow />

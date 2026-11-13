@@ -32,15 +32,15 @@ export default function Hero({ t, locale, img }: { t: Dict; locale: Locale; img:
     <section className="hero" ref={ref} aria-labelledby="hero-title">
       <div className="container hero__grid">
         <div className="hero__copy">
-          <p {...fade(0.2)} className="kicker in-fade">
+          <h1 id="hero-title" {...fade(0.2)} className="kicker hero__h1 in-fade">
             <span className="kicker__dot" aria-hidden="true" />
-            {t.hero.kicker}
-          </p>
-
-          <h1 id="hero-title" className="hero__title">
-            <Line text={t.hero.titleA} delay={0.3} />
-            <Line text={t.hero.titleB} delay={0.42} />
+            {t.hero.h1}
           </h1>
+
+          <p className="hero__title">
+            <Line text={t.hero.titleA} delay={0.3} />{" "}
+            <Line text={t.hero.titleB} delay={0.42} />
+          </p>
 
           <p {...fade(0.65)} className="hero__lead in-fade">
             {t.hero.lead}

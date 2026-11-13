@@ -54,7 +54,7 @@ export default function Services({
                       <Arrow />
                     </span>
                     <span className="svc__thumb" aria-hidden="true">
-                      <Photo img={imgs[slug]} alt="" pendingLabel={t.photo.pending} />
+                      <Photo img={imgs[slug]} alt="" pendingLabel={t.photo.pending} sizes="(max-width: 959px) 90vw, 1px" />
                     </span>
                   </a>
                 </motion.li>

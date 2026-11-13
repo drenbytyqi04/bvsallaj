@@ -51,7 +51,20 @@ export function businessJsonLd(locale: Locale, description: string) {
       addressLocality: site.city,
       addressCountry: site.country,
     },
+    geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
+    hasMap: site.mapsUrl,
+    founder: site.owners.split(" und ").map((n) => ({ "@type": "Person", name: n })),
     areaServed: site.cities.map((c) => ({ "@type": "City", name: c })),
+    makesOffer: [
+      "Bodenbeläge verlegen",
+      "Vinylboden verlegen",
+      "Laminat verlegen",
+      "Parkett verlegen",
+      "Fliesenarbeiten",
+      "Malerarbeiten",
+      "Trockenbau",
+      "Renovierung",
+    ].map((n) => ({ "@type": "Offer", itemOffered: { "@type": "Service", name: n } })),
     knowsLanguage: ["de", "sq", "en"],
     aggregateRating: {
       "@type": "AggregateRating",
@@ -60,5 +73,17 @@ export function businessJsonLd(locale: Locale, description: string) {
       bestRating: 5,
     },
     sameAs: [site.reviewsUrl],
+  };
+}
+
+export function websiteJsonLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    url: `${site.url}/${locale}/`,
+    name: site.name,
+    inLanguage: locale,
+    publisher: { "@id": `${site.url}/#business` },
   };
 }
